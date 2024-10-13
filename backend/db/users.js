@@ -1,21 +1,12 @@
-import pg from "pg";
+import db from "./db.js";
 
-const db = new pg.Client({
-    user: "postgres",
-    host: "localhost",
-    database: "Sports",
-    password:"veeresh123",
-    port:5432
-});
-
-db.connect()
-
-async function getUsers(email){
+getUsers = async () =>{
     try{
-        res = await db.query(`SELECT * FROM Users WHERE email=${1}`,[email]);
-        return res.rows;        
-    }catch(err){
-        console.log("Error fetch in users");        
+        res = await db.query("SELECT * FROM Users");
+        return res.rows;
+    }
+    catch(err){
+        console.log("Error fetching users");
     }
 }
 

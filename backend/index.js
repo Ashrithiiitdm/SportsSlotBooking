@@ -1,16 +1,6 @@
 import express from "express";
-import pg from "pg";
-
 const app = express()
 const port = 8000;
-
-const db = new  pg.Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'Sports',
-    password: 'veeresh123',
-    port: 5432
-});
 
 //post route for profile 
 app.post("/profile",(req, res)=>{
