@@ -1,8 +1,24 @@
 import React from "react";
 import "./Navbar.css";
 import logo from "../assets/logo.webp";
+import { useGoogleLogin } from "@react-oauth/google";
+// import { jwtDecode } from "jwt-decode";
 
 function Navbar(){
+    const login = useGoogleLogin({
+        onSuccess: (tokenResponse) => {
+            console.log("success");
+            // var decodedResponse = jwtDecode(tokenResponse.access_token,{header:true});
+            // console.log("hi");
+            console.log(tokenResponse);
+            
+        },
+        onError: (error) => {
+            console.log("Failure");
+            console.log(error)
+        },
+    });
+
     return(
         <nav className="navbar">
             <div className="logo">
@@ -18,7 +34,7 @@ function Navbar(){
                 <li><a href="/slotbooking">Slot Booking</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li id="auth-btn">
-                <a href="/auth/google/" className="signIn">Sign In</a>
+                <a onClick={()=>login()} className="signIn">Sign In</a>
                 </li>
             </ul>
             {/* <div className="bx bx-menu" id="menu-icon"></div> */}
