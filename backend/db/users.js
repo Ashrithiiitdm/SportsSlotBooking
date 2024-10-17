@@ -1,6 +1,6 @@
 import db from "./db.js";
 
-getUsers = async () =>{
+const getUsers = async () =>{
     try{
         res = await db.query("SELECT * FROM Users");
         return res.rows;
@@ -12,11 +12,11 @@ getUsers = async () =>{
 
 async function addUser(user){
     try{
-        res = await db.query("INSERT INTO Users (uname, email) VAULES($1, $2)",[user.uname, user.email]);
+        res = await db.query("INSERT INTO Users (uname, email) VALUES($1, $2)",[user.uname, user.email]);
         getUsers(user.email); 
     }catch(err){
         console.log("Error inserting data");
     }
 }
 
-export default {getUsers, addUser};
+export {getUsers, addUser};
