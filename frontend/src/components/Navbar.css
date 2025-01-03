@@ -28,6 +28,10 @@
     color: black;
 }
 
+.logoText:hover{
+    color: black;
+}
+
 .navList{
     display: flex;
 }
@@ -60,14 +64,11 @@
 .navList a:hover{
     /* border-radius: 30px; */
     border-bottom: 2px solid white;
+    color: white;
 }
 
 .navList a.signIn:hover{
     color: white;
     background: black;
     /* border-bottom: 2px solid black; */
-}
-
-.navList a{
-    text-decoration: none;
 }
